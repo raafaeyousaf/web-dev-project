@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CGPA Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+ <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #e8f0ff, #ffffff);
+    padding: 40px 20px;
+    color: #222;
+  }
+
+  h2 {
+    text-align: center;
+    background: #002b5c;
+    color: #fff;
+    padding: 20px;
+    font-size: 26px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+  }
+
+  .box {
+    background: #ffffff;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    flex: 1 1 350px;
+    min-width: 300px;
+    max-width: 47%;
+    transition: transform 0.2s ease;
+  }
+
+  .box:hover {
+    transform: translateY(-4px);
+  }
+
+  .full-width-box {
+    width: 100%;
+    max-width: 95%;
+    text-align: center;
+    padding: 25px 20px;
+    border-radius: 16px;
+    background-color: #f8f9fb;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  }
+
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 14px;
+    font-size: 16px;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 18px;
+    transition: all 0.3s ease;
+  }
+
+  input:focus {
+    border-color: #004080;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 64, 128, 0.2);
+  }
+
+  .semester-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  .semester-row input {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  button {
+    background: linear-gradient(to right, #004080, #0066cc);
+    color: white;
+    padding: 14px 22px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+  }
+
+  button:hover {
+    background: linear-gradient(to right, #003366, #004080);
+  }
+
+  .result {
+    background-color: #e6ffea;
+    border-left: 5px solid #28a745;
+    color: #225522;
+    padding: 18px;
+    font-size: 17px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 25px;
+  }
+
+  /* 🔽 Mobile Responsive Styling */
+@media (max-width: 600px) {
+  body {
+    padding: 20px 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+    padding: 12px 14px;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .box,
+  .full-width-box {
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+    padding: 20px 15px;
+    border-radius: 14px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .semester-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .result {
+    font-size: 15px;
+    padding: 15px;
+  }
+}
+
+</style>
+
+</head>
+<body>
+ <h2>📘 SGPA Calculator & CPGPA Calculater</h2>
+   <div class="container">
+  <div class="box full-width-box">
+    <h2>📘 SGPA Calculator</h2>
+    <div id="subjectInputs">
+      <!-- 8 Subjects Input -->
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 1 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 2 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 3 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 4 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 5 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 6 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 7 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+      <div class="semester-row">
+        <input type="text" class="subject" placeholder="Subject 8 Name">
+        <input type="text" class="grade" placeholder="Grade (e.g. A, B+, F)">
+        <input type="number" class="credit" placeholder="Credit Hours">
+      </div>
+    </div>
+    <button onclick="calculateSGPA()">🎯 Calculate SGPA</button>
+    <div class="result" id="sgpaOutput"></div>
+  </div>
+</div>
+
+  <h2>🎓 CGPA Calculator (with Improvement Option)</h2>
+
+  <div class="container">
+    <!-- LEFT BOX -->
+    <div class="box">
+      <label>🔹 Previous CGPA:</label>
+      <input type="number" step="0.01" id="prevCgpa" placeholder="e.g. 2.32">
+      <label>🔹 Previous Total Credit Hours:</label>
+      <input type="number" id="prevCredits" placeholder="e.g. 70">
+    </div>
+
+    <!-- RIGHT BOX -->
+    <div class="box">
+      <label>🔸 Improved Credit Hours (optional):</label>
+      <input type="number" id="impCredits" placeholder="e.g. 6">
+      <label>🔸 Improved SGPA:</label>
+      <input type="number" step="0.01" id="impSgpa" placeholder="e.g. 3.50">
+      <label>🔸 Old Grade Points You Replaced:</label>
+      <input type="number" step="0.01" id="oldPointsReplaced" placeholder="e.g. 7.2">
+    </div>
+
+    <!-- CENTER BOX (BOTTOM FULL WIDTH) -->
+    <div class="box full-width-box">
+      <label>🆕 Add Semesters Below:</label>
+      <div id="semesterContainer">
+        <div class="semester-row">
+          <input type="number" step="0.01" class="newSgpa" placeholder="New Semester SGPA">
+          <input type="number" class="newCredits" placeholder="New Semester Credit Hours">
+        </div>
+      </div>
+      <button onclick="addSemester()">➕ Add Semester</button>
+    </div>
+
+    <!-- BUTTON BOX FULL WIDTH -->
+    <div class="box full-width-box">
+      <button onclick="calculateFinalCGPA()">✅ Calculate Final CGPA</button>
+      <div class="result" id="output"></div>
+    </div>
+  </div>
+
+ 
+
+
+  <script>
+    function addSemester() {
+      const container = document.getElementById("semesterContainer");
+      const row = document.createElement("div");
+      row.className = "semester-row";
+      row.innerHTML = `
+        <input type="number" step="0.01" class="newSgpa" placeholder="New Semester SGPA">
+        <input type="number" class="newCredits" placeholder="New Semester Credit Hours">
+      `;
+      container.appendChild(row);
+    }
+
+    function calculateFinalCGPA() {
+      const prevCgpa = parseFloat(document.getElementById("prevCgpa").value);
+      const prevCredits = parseFloat(document.getElementById("prevCredits").value);
+      const impCredits = parseFloat(document.getElementById("impCredits").value);
+      const impSgpa = parseFloat(document.getElementById("impSgpa").value);
+      const oldPointsReplaced = parseFloat(document.getElementById("oldPointsReplaced").value);
+
+      if (isNaN(prevCgpa) || isNaN(prevCredits)) {
+        document.getElementById("output").innerText = "❌ Please fill in your previous CGPA and credits.";
+        return;
+      }
+
+      let prevPoints = prevCgpa * prevCredits;
+
+      if (!isNaN(impCredits) && !isNaN(impSgpa) && !isNaN(oldPointsReplaced)) {
+        const impPoints = impCredits * impSgpa;
+        prevPoints = prevPoints - oldPointsReplaced + impPoints;
+      }
+
+      let finalPoints = prevPoints;
+      let finalCredits = prevCredits;
+
+      const newSgpas = document.querySelectorAll(".newSgpa");
+      const newCredits = document.querySelectorAll(".newCredits");
+
+      for (let i = 0; i < newSgpas.length; i++) {
+        const sgpa = parseFloat(newSgpas[i].value);
+        const credits = parseFloat(newCredits[i].value);
+        if (!isNaN(sgpa) && !isNaN(credits)) {
+          finalPoints += sgpa * credits;
+          finalCredits += credits;
+        }
+      }
+
+      const finalCgpa = (finalPoints / finalCredits).toFixed(2);
+
+      document.getElementById("output").innerHTML = `
+        ✅ <b>Final CGPA: ${finalCgpa}</b><br>
+        🧮 Total Grade Points: ${finalPoints.toFixed(2)}<br>
+        📚 Total Credit Hours: ${finalCredits}
+      `;
+    }
+
+
+    function getGradePointByLetter(grade) {
+  switch (grade.toUpperCase()) {
+    case 'A': return 4.00;
+    case 'A-': return 3.67;
+    case 'B+': return 3.33;
+    case 'B': return 3.00;
+    case 'B-': return 2.67;
+    case 'C+': return 2.33;
+    case 'C': return 2.00;
+    case 'C-': return 1.67;
+    case 'D+': return 1.30;
+    case 'D': return 1.00;
+    case 'F': return 0.00;
+    case 'W': case 'I': case 'S': return null; // Ignored
+    default: return null;
+  }
+}
+
+function calculateSGPA() {
+  const grades = document.querySelectorAll('.grade');
+  const credits = document.querySelectorAll('.credit');
+
+  let totalPoints = 0;
+  let totalCredits = 0;
+
+  for (let i = 0; i < grades.length; i++) {
+    const grade = grades[i].value.trim();
+    const credit = parseFloat(credits[i].value);
+
+    const point = getGradePointByLetter(grade);
+
+    if (point !== null && !isNaN(credit)) {
+      totalPoints += point * credit;
+      totalCredits += credit;
+    }
+  }
+
+  if (totalCredits === 0) {
+    document.getElementById("sgpaOutput").innerText = "❌ Please enter valid grades and credit hours.";
+    return;
+  }
+
+  const sgpa = (totalPoints / totalCredits).toFixed(2);
+
+  document.getElementById("sgpaOutput").innerHTML = `
+    ✅ <b>SGPA: ${sgpa}</b><br>
+    🧮 Total Grade Points: ${totalPoints.toFixed(2)}<br>
+    📚 Total Credit Hours: ${totalCredits}
+  `;
+}
+
+  </script>
+</body>
+</html>
